@@ -38,8 +38,14 @@ export default function Login() {
         if (form.password !== form.confirmPassword) { setError('Passwords do not match'); setLoading(false); return; }
         await register({ email: form.email, password: form.password, name: form.name });
       }
-      toast({ title: mode === 'login' ? '✓ Welcome back!' : '✓ Account created!' });
-      navigate(redirectTo, { replace: true });
+      if (mode === 'login') {
+        toast({ title: '✓ Welcome back!' });
+        navigate(redirectTo, { replace: true });
+      } else {
+        toast({ title: '✓ Account created! Please sign in.' });
+        setForm((p) => ({ ...p, name: '', password: '', confirmPassword: '' }));
+        setMode('login');
+      }
     } catch (err) {
       setError(err.message || 'Something went wrong');
     } finally {
