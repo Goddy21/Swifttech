@@ -1,0 +1,98 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed product description"
+    },
+    "price": {
+      "type": "number",
+      "description": "Current/sale price in KES"
+    },
+    "original_price": {
+      "type": "number",
+      "description": "Original price before discount in KES (optional)"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "electronics",
+        "home_appliances",
+        "machinery",
+        "tools",
+        "components"
+      ],
+      "description": "Product category"
+    },
+    "subcategory": {
+      "type": "string",
+      "description": "Product subcategory"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Array of image URLs"
+    },
+    "specs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Technical specifications"
+    },
+    "sku": {
+      "type": "string",
+      "description": "Stock keeping unit"
+    },
+    "stock": {
+      "type": "number",
+      "description": "Quantity in stock"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Brand name"
+    },
+    "weight": {
+      "type": "string",
+      "description": "Product weight"
+    },
+    "dimensions": {
+      "type": "string",
+      "description": "Product dimensions"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether product is featured"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "draft",
+        "archived"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name",
+    "price",
+    "category"
+  ]
+}
